@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Flowsheet } from "@/components/analysis/Flowsheet";
+import Image from "next/image";
 import { Heatmap } from "@/components/analysis/Heatmap";
 import { AnalysisCharts } from "@/components/analysis/AnalysisCharts";
 import { DATA, GRID_G, GRID_V, SPECS } from "@/lib/model";
@@ -37,16 +37,22 @@ export default function AnalysisPage() {
         </header>
 
         {/* flowsheet */}
-        <section className="wrap pb-24 md:pb-40" aria-labelledby="flow-h">
-          <h2 id="flow-h" className="label m-0 border-t border-[var(--rule)] pb-8 pt-4 !text-[var(--fg)]">
-            Flowsheet
+        <section className="wrap pb-24 md:pb-40" aria-labelledby="aspen-h">
+          <h2 id="aspen-h" className="label m-0 border-t border-[var(--rule)] pb-8 pt-4 !text-[var(--fg)]">
+            Aspen Plus flowsheet
           </h2>
           <div style={{ background: "var(--bg)" }} className="p-4 md:p-8">
-            <Flowsheet />
+            <Image
+              src="/analysis/flowsheet-aspen-v09b.webp"
+              alt="Aspen Plus V14 flowsheet, stage v09b, showing feed mixing, screening, classification, liberation, air classification, bag filter and product mixing."
+              width={2400}
+              height={1087}
+              sizes="(min-width: 768px) 1200px, 100vw"
+              className="h-auto w-full"
+            />
           </div>
           <p className="body-s mute mt-6">
-            Dashed boxes leave the plant as by-products. {FEED_KG_H.toFixed(1)}{THIN}kg/h of dried cells in, of which{" "}
-            {BM_FEED_KG_H.toFixed(1)}{THIN}kg/h is black mass (NMC and graphite with binder). Orange marks the two black-mass products.
+            Aspen Plus V14 flowsheet, stage v09b. Unit and stream labels are as exported from Aspen.
           </p>
         </section>
 
