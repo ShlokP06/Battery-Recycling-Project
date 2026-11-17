@@ -215,7 +215,7 @@ export function FrameHero({ main, total, second, lost, energy }: Props) {
 
   return (
     <div ref={wrap} className="relative h-[420svh] bg-bg text-fg md:h-[480svh]">
-      <h1 className="sr-only">Kaala. Black mass recovered from Li-ion batteries, dry and mechanical.</h1>
+      <h1 className="sr-only">LITHNOVA Recycling. Black mass recovered from Li-ion batteries, dry and mechanical.</h1>
       <div className="sticky top-0 h-svh overflow-hidden">
         <canvas ref={canvas} className="absolute inset-0 h-full w-full" aria-hidden />
 

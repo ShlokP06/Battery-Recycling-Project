@@ -3,7 +3,7 @@
 // filled in on the page itself, so don't type recovery or energy figures here.
 
 export const ABOUT_LEAD =
-  "Kaala turns spent lithium-ion cells into clean, graded black mass: the powder that holds the nickel, cobalt, manganese and lithium. We do it dry and mechanically, then sell it to the refiners who extract the metals.";
+  "LITHNOVA Recycling turns spent lithium-ion cells into clean, graded black mass: the powder that holds the nickel, cobalt, manganese and lithium. We do it dry and mechanically, then sell it to the refiners who extract the metals.";
 
 export const ABOUT_SECTIONS: { title: string; paras: string[] }[] = [
   {

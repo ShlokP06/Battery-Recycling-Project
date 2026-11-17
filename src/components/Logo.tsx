@@ -1,12 +1,12 @@
-/** Wordmark KAALA followed by the orange granule full stop (0.16em, on baseline, 0.06em gap). */
+/** Wordmark LITHNOVA followed by the orange granule full stop (0.16em, on baseline, 0.06em gap). */
 export function Logo({ size = 28, keyline = false }: { size?: number; keyline?: boolean }) {
   return (
     <span
       className="display-xl nowrap"
       style={{ fontSize: size, lineHeight: 1, letterSpacing: "0.01em", display: "inline-block" }}
-      aria-label="Kaala"
+      aria-label="LITHNOVA"
     >
-      <span aria-hidden>KAALA</span>
+      <span aria-hidden>LITHNOVA</span>
       <span
         aria-hidden
         style={{

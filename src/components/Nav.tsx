@@ -38,7 +38,7 @@ export function Nav() {
   return (
     <header data-theme={theme} className="absolute inset-x-0 top-0 z-40 !bg-transparent">
       <div className="wrap flex h-14 items-center justify-between md:h-16">
-        <Link href="/" className="tap" aria-label="Kaala, home">
+        <Link href="/" className="tap" aria-label="LITHNOVA Recycling, home">
           <Logo size={28} keyline={theme === "paper"} />
         </Link>
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">

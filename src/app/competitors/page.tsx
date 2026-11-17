@@ -7,7 +7,7 @@ import { THIN, flows, fmt } from "@/lib/derived";
 export const metadata: Metadata = {
   title: "Landscape",
   description:
-    "Pyrometallurgy burns black mass, hydrometallurgy dissolves it, Kaala sieves it. Where dry mechanical recovery fits next to smelters and leach plants.",
+    "Pyrometallurgy burns black mass, hydrometallurgy dissolves it, LITHNOVA sieves it. Where dry mechanical recovery fits next to smelters and leach plants.",
 };
 
 type Route = { name: string; ex: string; us?: boolean; cells: [string, string][] };

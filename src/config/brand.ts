@@ -1,7 +1,7 @@
 // Single place to rename the company. Change `name` / `short` and everything follows.
 export const BRAND = {
-  name: "Kaala Materials",
-  short: "Kaala",
+  name: "LITHNOVA Recycling",
+  short: "LITHNOVA",
   tagline: "Black mass, recovered mechanically.",
   description:
     "Dry mechanical recovery of battery-grade black mass from end-of-life lithium-ion cells, with no acid and no furnace.",
