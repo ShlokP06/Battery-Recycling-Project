@@ -1,0 +1,497 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   KAALA design tokens. Three colours, one meaning each:
+   carbon = ground, cream = paper + type on carbon, orange = recovered material only.
+   ------------------------------------------------------------------ */
+:root {
+  --carbon: #0d0e0c;
+  --cream: #ece6da;
+  --orange: #ff5a1f;
+  --lost: #7a776e;
+
+  --font-display: "Archivo Variable", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Archivo Variable", system-ui, sans-serif;
+  --font-mono: "Martian Mono Variable", ui-monospace, "SF Mono", Consolas, monospace;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0, 1);
+  --ease-inout: cubic-bezier(0.7, 0, 0.2, 1);
+  --dur-s: 160ms;
+  --dur-m: 320ms;
+  --dur-l: 480ms;
+  --dur-xl: 640ms;
+
+  --margin: 16px;
+  --gutter: 8px;
+}
+@media (min-width: 768px) {
+  :root {
+    --margin: 32px;
+    --gutter: 16px;
+  }
+}
+
+/* themes: sections switch ground with data-theme */
+[data-theme="carbon"] {
+  --bg: #0d0e0c;
+  --fg: #ece6da;
+  --fg-mute: #a39e92;
+  --rule: #939088;
+  --rule-soft: #ece6da3d;
+  --focus: #ece6da;
+  background: var(--bg);
+  color: var(--fg);
+}
+[data-theme="paper"] {
+  --bg: #ece6da;
+  --fg: #0d0e0c;
+  --fg-mute: #5e5b52;
+  --rule: #0d0e0c;
+  --rule-soft: #0d0e0c29;
+  --focus: #0d0e0c;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-mute: var(--fg-mute);
+  --color-rule: var(--rule);
+  --color-orange: var(--orange);
+  --color-lost: var(--lost);
+  --font-display: "Archivo Variable", "Arial Narrow", Impact, sans-serif;
+  --font-sans: "Archivo Variable", system-ui, sans-serif;
+  --font-mono: "Martian Mono Variable", ui-monospace, "SF Mono", Consolas, monospace;
+
+  /* LEGACY HERO SHIM. src/components/hero (old 3D hero) still uses these class names.
+     Delete this block together with the old hero. */
+  --color-ink: var(--fg);
+  --color-ink-2: var(--fg-mute);
+  --color-green: var(--fg);
+  --color-paper: var(--bg);
+  --color-grey: var(--fg-mute);
+}
+
+html {
+  background: #0d0e0c;
+}
+body {
+  margin: 0;
+  background: #0d0e0c;
+  color: #ece6da;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 22px;
+  font-stretch: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+:focus-visible {
+  outline: 2px solid var(--focus, #ece6da);
+  outline-offset: 3px;
+}
+
+@layer components {
+/* ---------- type ---------- */
+.display-hero,
+.display-num-hero,
+.display-num,
+.display-xl,
+.display-l,
+.display-s,
+.heading,
+.display {
+  font-family: var(--font-display);
+  font-stretch: 62%;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+.display-num {
+  font-size: 38vw;
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+}
+.display-xl {
+  font-size: 22vw;
+  line-height: 0.85;
+  letter-spacing: -0.01em;
+}
+.display-l {
+  font-size: 15vw;
+  line-height: 0.9;
+  letter-spacing: -0.005em;
+}
+.display-s {
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 800;
+}
+.heading {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+@media (min-width: 768px) {
+  .display-num {
+    font-size: clamp(120px, 17vw, 260px);
+  }
+  .display-xl {
+    font-size: clamp(72px, 12vw, 200px);
+  }
+  .display-l {
+    font-size: clamp(48px, 7vw, 112px);
+  }
+  .display-s {
+    font-size: 40px;
+  }
+  .heading {
+    font-size: 24px;
+  }
+}
+/* legacy hero class (old hero only) */
+.display {
+  letter-spacing: -0.01em;
+  line-height: 0.9;
+}
+
+.body,
+.body-s {
+  font-family: var(--font-body);
+  font-stretch: 100%;
+  font-weight: 400;
+  margin: 0;
+  max-width: 52ch;
+}
+.body-s {
+  font-size: 13px;
+  line-height: 19px;
+}
+.body-strong {
+  font-weight: 600;
+}
+.label,
+.tick,
+.data,
+.num {
+  font-family: var(--font-mono);
+  font-stretch: 100%;
+  font-variant-numeric: tabular-nums;
+}
+.label {
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-mute);
+}
+.data,
+.num {
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+}
+@media (max-width: 767px) {
+  .data {
+    font-size: 12px;
+  }
+}
+.tick {
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.mute {
+  color: var(--fg-mute);
+}
+.fg {
+  color: var(--fg);
+}
+.recovered {
+  color: var(--orange);
+}
+.nowrap {
+  white-space: nowrap;
+}
+.sr-only-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- layout ---------- */
+.wrap {
+  padding-inline: var(--margin);
+  max-width: 1680px;
+  margin-inline: auto;
+}
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+@media (min-width: 768px) {
+  .grid12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+.space-giant {
+  padding-block: 96px;
+}
+@media (min-width: 768px) {
+  .space-giant {
+    padding-block: 160px;
+  }
+}
+.hair-t {
+  border-top: 1px solid var(--rule);
+}
+.hair-b {
+  border-bottom: 1px solid var(--rule);
+}
+.hair-l {
+  border-left: 1px solid var(--rule);
+}
+.hair-r {
+  border-right: 1px solid var(--rule);
+}
+.ticket {
+  border-top: 3px solid var(--fg);
+}
+
+/* grain: carbon sections only; static tile, opacity 0.05, no overlay on the viewport */
+[data-theme="carbon"][data-grain] {
+  position: relative;
+}
+[data-theme="carbon"][data-grain]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/grain.png");
+  background-size: 256px 256px;
+  opacity: 0.05;
+}
+
+/* graph paper: analysis page only */
+.graph-paper {
+  background-image:
+    linear-gradient(to right, var(--rule-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--rule-soft) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: -1px -1px;
+  position: relative;
+}
+.graph-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image:
+    linear-gradient(to right, var(--rule-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--rule-soft) 1px, transparent 1px);
+  background-size: 8px 8px;
+  background-position: -1px -1px;
+}
+
+/* ---------- links, buttons ---------- */
+.link {
+  position: relative;
+  display: inline-block;
+  color: var(--fg);
+  text-decoration: none;
+}
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: var(--fg);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-s) var(--ease-out);
+}
+.link:hover::after,
+.link[aria-current="page"]::after,
+.link.is-on::after {
+  transform: scaleX(1);
+}
+.link-u::after {
+  transform: scaleX(1);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 1px solid var(--fg);
+  background: var(--fg);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-s) var(--ease-out),
+    color var(--dur-s) var(--ease-out);
+}
+.btn:hover {
+  background: var(--bg);
+  color: var(--fg);
+}
+.tap {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* lost material: grey, always hatched */
+.hatch {
+  background-image: repeating-linear-gradient(45deg, var(--lost) 0 1px, transparent 1px 5px);
+}
+
+/* tags: dashed, no fill */
+.tag {
+  display: inline-block;
+  border: 1px dashed var(--rule);
+  padding: 1px 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+.tag-solid {
+  border-style: solid;
+}
+
+/* ---------- range sliders ---------- */
+input[type="range"].k-range {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 0;
+}
+input[type="range"].k-range::-webkit-slider-runnable-track {
+  height: 1px;
+  background: var(--rule);
+}
+input[type="range"].k-range::-moz-range-track {
+  height: 1px;
+  background: var(--rule);
+}
+input[type="range"].k-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  border-radius: 0;
+  background: var(--fg);
+  border: 2px solid var(--bg);
+  box-sizing: border-box;
+  box-shadow: 0 0 0 1px var(--fg);
+}
+input[type="range"].k-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 0;
+  background: var(--fg);
+  border: 2px solid var(--bg);
+  box-sizing: border-box;
+  box-shadow: 0 0 0 1px var(--fg);
+}
+input[type="range"].k-range:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* process word wipe */
+.wipe {
+  transition: clip-path var(--dur-l) var(--ease-inout);
+  clip-path: inset(0 0 0 0);
+}
+.wipe[data-state="before"] {
+  clip-path: inset(0 0 100% 0);
+}
+.wipe[data-state="after"] {
+  clip-path: inset(100% 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* home process: pinned by default, plain list under reduced motion */
+.process-list {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .process-pinned {
+    display: none;
+  }
+  .process-list {
+    display: block;
+  }
+}
+:root {
+  --stage-size: 22vw;
+}
+@media (min-width: 768px) {
+  :root {
+    --stage-size: clamp(72px, 12vw, 200px);
+  }
+}
+@media (max-width: 767px) {
+  :root {
+    --stage-size: 20vw;
+  }
+}
+
+/* competitors statement: three sentences must fit 12 columns */
+.statement {
+  font-size: 0.84em;
+}
+@media (max-width: 767px) {
+  .statement {
+    font-size: 0.66em;
+  }
+}
+
+}
