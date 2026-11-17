@@ -32,7 +32,7 @@ export default function TeamPage() {
               >
                 <div className="relative mx-auto aspect-[4/5] w-full max-w-[160px] overflow-hidden md:mx-0" style={{ background: "var(--bg)" }}>
                   {m.photo ? (
-                    <Image src={m.photo} alt={m.name} fill sizes="160px" className="object-cover" style={{ filter: "grayscale(1) contrast(1.15)" }} />
+                    <Image src={m.photo} alt={m.name} fill sizes="160px" className="object-cover" />
                   ) : (
                     <>
                       <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 160 200" aria-hidden>
